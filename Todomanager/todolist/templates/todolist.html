@@ -10,6 +10,19 @@ Welcome to {{page}}
 
 {% block content%}
 <ul>
+  <br>
+  <!--From Start-->
+  <form method="post">  <!--1> Define Method of From is POST-->
+    {% csrf_token %}<!--2> Add CSRF Token-->
+   
+  <div class="mb-3" >
+    <input type="text" class="form-control" name="task" placeholder="New Task">
+  </div>                                <!-- 3> add Name-->
+
+  <button type="submit" class="btn btn-primary">Add Task</button>
+</form>
+
+</br>
    <table class="table table-bordered border-primary">
   <thead class="table-dark">
     <tr>
