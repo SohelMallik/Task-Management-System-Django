@@ -43,3 +43,10 @@ def todolist(request):# For save data to database
         'all_tasks': all_tasks,
     }
     return render(request, 'todolist.html', context)
+
+
+def delete_task(request, task_id):# For Delete data from database
+    task = Task.objects.get(id=task_id) # Get the task object by ID
+    task.delete() # Delete the task from database
+    messages.success(request, "Task deleted successfully!")# Display success message
+    return redirect("todolist") #Redirect to todolist page after deleting the data
