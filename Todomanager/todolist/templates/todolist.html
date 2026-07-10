@@ -4,13 +4,26 @@
 Todo List
 {% endblock title %}
 
-{% block heading %}
+{% comment %} {% block heading %}
 Welcome to {{page}}
-{% endblock heading %}
+{% endblock heading %} {% endcomment %}
 
 {% block content%}
 <ul>
   <br>
+  <!-- Messages -->
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Close">
+            </button>
+        </div>
+    {% endfor %}
+{% endif %}
   <!--From Start-->
   <form method="post">  <!--1> Define Method of From is POST-->
     {% csrf_token %}<!--2> Add CSRF Token-->
