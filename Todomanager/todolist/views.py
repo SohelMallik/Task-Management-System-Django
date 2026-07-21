@@ -19,11 +19,34 @@ def aboutus(request):
     }
     return render(request, 'aboutus.html', context)
 
+# def contact(request):
+#     context={
+#         'page' :'contact page'
+#     }
+#     return render(request, 'contact.html', context)
+
+from .models import Contact
+
 def contact(request):
-    context={
-        'page' :'contact page'
-    }
-    return render(request, 'contact.html', context)
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        issue = request.POST.get("issue")
+        priority = request.POST.get("priority")
+        message = request.POST.get("message")
+
+        Contact.objects.create(
+            name=name,
+            email=email,
+            issue=issue,
+            priority=priority,
+            message=message
+        )
+        messages.success(request, "Contact message submitted successfully!")
+
+        return redirect("contact")   # Redirect back to contact page
+
+    return render(request, "contact.html")
 
 
 def todolist(request):# For save data to database
@@ -87,3 +110,30 @@ def complete_task(request, task_id):  # For Marking a task as complete
     task.save()
     messages.success(request, "Task marked as complete!")
     return redirect("todolist")
+
+
+def pending_task(request, task_id):  # For Marking a task as pending
+    task=Task.objects.get(id=task_id)  # Get the task object by ID
+    task.is_completed = False
+    task.save()
+    messages.success(request, "Task marked as pending!")
+    return redirect("todolist")
+
+def submit_contact(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        issue = request.POST.get("issue")
+        priority = request.POST.get("priority")
+        message = request.POST.get("message")
+
+        Contact.objects.create(
+            name=name,
+            email=email,
+            issue=issue,
+            priority=priority,
+            message=message
+        )
+        messages.success(request, "Contact message submitted successfully!")
+
+    return redirect("contact")  # Redirect back to contact page
