@@ -9,12 +9,12 @@ class TaskForm(forms.ModelForm):
         model = Task
         fields = ['task', 'is_completed']
 
-    def clean_task(self):
-        task = self.cleaned_data.get('task')
+    # def clean_task(self):
+    #     task = self.cleaned_data.get('task')
 
-        if not task.strip():
-            raise forms.ValidationError("You did not write anything!")
+    #     if not task.strip():
+    #         raise forms.ValidationError("You did not write anything!")
 
-        return task
+    #     return task
 
 #From todolist.html name=task is same as this forms.py task name.
