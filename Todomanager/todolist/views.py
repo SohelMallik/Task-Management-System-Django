@@ -1,10 +1,12 @@
 from multiprocessing import context
 
+from django.core import paginator
 from django.shortcuts import redirect, render
 from .models import Task #Import Task model from models.py
 
 from todolist.forms import TaskForm #Import TaskForm from forms.py
 from django.contrib import messages # For Messages
+from django.core.paginator import Paginator # For Pagination
 
 # Views connect with Templates
 def homepage(request):
@@ -62,6 +64,10 @@ def todolist(request):# For save data to database
 
 
     all_tasks= Task.objects.all() # get all the tasks from database as Objects
+    #For Pagination
+    paginator = Paginator(all_tasks, 5)  # Show 5 tasks per page
+    page_number = request.GET.get('page')  # Get the current page number from the request
+    all_tasks = paginator.get_page(page_number)  # Get the tasks for the current page
 
     context={
         'page' :'todolist page',
