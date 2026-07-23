@@ -1,9 +1,178 @@
 {% extends "base.html" %}
 
 {% block title %}
-About 
+About
 {% endblock title %}
 
-{% block heading %}
-Welcome to {{page}}
-{% endblock heading %}
+{% block content %}
+
+<div class="container mt-5">
+
+    <!-- Page Header -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">About Task Management System</h2>
+        </div>
+
+        <div class="card-body">
+
+            <p class="lead">
+                Welcome to the <strong>Task Management System</strong>, a web
+                application developed using <strong>Django</strong>,
+                <strong>Python</strong>, <strong>Bootstrap</strong>, and
+                <strong>SQLite</strong>.
+            </p>
+
+            <p>
+                This application helps users organize and manage their daily
+                tasks in a simple and efficient way. Users can create new tasks,
+                update existing tasks, mark tasks as completed, and delete
+                unnecessary tasks.
+            </p>
+
+        </div>
+    </div>
+
+    <!-- Features -->
+    <div class="row">
+
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+
+                    <h4 class="text-primary">✨ Key Features</h4>
+
+                    <ul>
+                        <li>Create new tasks</li>
+                        <li>View all tasks</li>
+                        <li>Edit existing tasks</li>
+                        <li>Mark tasks as completed</li>
+                        <li>Delete completed tasks</li>
+                        <li>Simple and user-friendly interface</li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+
+                    <h4 class="text-success">🛠 Technologies Used</h4>
+
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Frontend</th>
+                            <td>HTML5, CSS3, Bootstrap</td>
+                        </tr>
+                        <tr>
+                            <th>Backend</th>
+                            <td>Python, Django</td>
+                        </tr>
+                        <tr>
+                            <th>Database</th>
+                            <td>SQLite</td>
+                        </tr>
+                        <tr>
+                            <th>Language</th>
+                            <td>Python</td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- CRUD Operations -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-dark text-white">
+            <h4 class="mb-0">CRUD Operations</h4>
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-striped table-bordered">
+
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Operation</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Create</td>
+                        <td>Add a new task.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Read</td>
+                        <td>View all available tasks.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Update</td>
+                        <td>Edit an existing task.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Delete</td>
+                        <td>Remove a task permanently.</td>
+                    </tr>
+
+                    <tr>
+                        <td>Complete</td>
+                        <td>Mark a task as completed.</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+
+    <!-- Benefits -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-info text-white">
+            <h4 class="mb-0">Why Use This Application?</h4>
+        </div>
+
+        <div class="card-body">
+
+            <ul>
+                <li>Improve productivity.</li>
+                <li>Manage daily tasks efficiently.</li>
+                <li>Easy to use interface.</li>
+                <li>Fast and lightweight application.</li>
+                <li>Learn Django CRUD operations.</li>
+            </ul>
+
+        </div>
+    </div>
+
+    <!-- Developer -->
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Developer Information</h4>
+        </div>
+
+        <div class="card-body">
+
+            <p><strong>Name:</strong> Sohel Mallik</p>
+
+            <p>
+                This project was developed as a learning project to understand
+                Django fundamentals, including Models, Views, Templates,
+                URL Routing, Forms, and CRUD operations.
+            </p>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}
