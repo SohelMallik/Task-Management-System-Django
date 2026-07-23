@@ -7,6 +7,7 @@ from .models import Task #Import Task model from models.py
 from todolist.forms import TaskForm #Import TaskForm from forms.py
 from django.contrib import messages # For Messages
 from django.core.paginator import Paginator # For Pagination
+from django.contrib.auth.decorators import login_required # For Login Required Decorator
 
 # Views connect with Templates
 def homepage(request):
@@ -50,7 +51,7 @@ def contact(request):
 
     return render(request, "contact.html")
 
-
+@login_required(login_url='login')  # Require login to access the todolist view
 def todolist(request):# For save data to database
 
     if request.method=="POST":# POST Means Create data to DB
