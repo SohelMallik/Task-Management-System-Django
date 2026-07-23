@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Edit Task
+{% endblock title %}
+
+{% block content %}
+
+<div class="container mt-4">
+<!-- Froms -->
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="id_task" class="form-label">Task</label>
+            <input
+                type="text"
+                class="form-control"
+                name="task"
+                id="id_task"
+                value="{{ task_obj.task }}"
+            >
+        </div>
+
+        <div class="form-check mb-3">
+            <input
+                type="checkbox"
+                class="form-check-input"
+                name="is_completed"
+                id="id_is_completed"
+                {% if task_obj.is_completed %}checked{% endif %}
+            >
+            <label class="form-check-label" for="id_is_completed">Completed</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Update Task
+        </button>
+
+    </form>
+
+    <br>
+
+</div>
+
+{% endblock content %}
