@@ -30,6 +30,7 @@ def aboutus(request):
 
 from .models import Contact
 
+@login_required(login_url='login')  # Require login to access the contact view
 def contact(request):
     if request.method == "POST":
         name = request.POST.get("name")
