@@ -76,7 +76,7 @@ def todolist(request):# For save data to database
     }
     return render(request, 'todolist.html', context)
 
-
+@login_required(login_url='login')  # Require login to access the delete_task view
 def delete_task(request, task_id):# For Delete data from database
     task = Task.objects.get(id=task_id) # Get the task object by ID
     task.delete() # Delete the task from database
@@ -84,6 +84,7 @@ def delete_task(request, task_id):# For Delete data from database
     return redirect("todolist") #Redirect to todolist page after deleting the data
 
 #For Edit data from database
+@login_required(login_url='login')
 def edit_task(request, task_id):  # For Edit data from database
     task_obj = Task.objects.get(id=task_id)
 
@@ -111,6 +112,7 @@ def edit_task(request, task_id):  # For Edit data from database
     return render(request, 'edit.html', context)
 
 #Marking a task as complete
+@login_required(login_url='login')
 def complete_task(request, task_id):  # For Marking a task as complete
     task=Task.objects.get(id=task_id)  # Get the task object by ID
     task.is_completed = True
@@ -119,6 +121,7 @@ def complete_task(request, task_id):  # For Marking a task as complete
     return redirect("todolist")
 
 
+@login_required(login_url='login')
 def pending_task(request, task_id):  # For Marking a task as pending
     task=Task.objects.get(id=task_id)  # Get the task object by ID
     task.is_completed = False
