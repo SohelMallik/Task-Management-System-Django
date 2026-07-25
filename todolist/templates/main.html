@@ -5,6 +5,15 @@
 Home
 {% endblock title %}
 
+<!--For JavaScript -->
+{% block script %}
+<script src="{% static 'js/main.js' %}"></script>
+{% endblock script %}
+<!--For CSS -->
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% endblock head %}
+
 {% block content %}
 
 <div class="container mt-5">
@@ -51,7 +60,7 @@ Home
         </a>
     </div>
 
-    <!-- Features -->
+    {% comment %} <!-- Features -->
     <div class="row text-center mt-5">
 
         <div class="col-md-3 mb-4">
@@ -94,7 +103,7 @@ Home
             </div>
         </div>
 
-    </div>
+    </div> {% endcomment %}
 
     <!-- About Section -->
     <div class="card shadow-sm mt-4">
