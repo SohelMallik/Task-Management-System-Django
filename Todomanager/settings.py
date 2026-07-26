@@ -140,3 +140,5 @@ STATICFILES_DIRS = [
 
 LOGIN_REDIRECT_URL = 'todolist'  # Redirect to todolist after login
 LOGIN_URL = 'login'  # Redirect to login page if not logged in
+
+# Default primary key field type
