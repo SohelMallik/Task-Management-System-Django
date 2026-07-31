@@ -121,7 +121,7 @@ def complete_task(request, task_id):  # For Marking a task as complete
     messages.success(request, "Task marked as complete!")
     return redirect("todolist")
 
-
+#Login 
 @login_required(login_url='login')
 def pending_task(request, task_id):  # For Marking a task as pending
     task=Task.objects.get(id=task_id)  # Get the task object by ID
