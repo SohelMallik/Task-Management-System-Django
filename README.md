@@ -1,30 +1,9 @@
-<<<<<<< HEAD
-# Todomanager
-
-Todomanager is a Django-based task management web application that helps users create, view, update, complete, and delete daily tasks. It also includes user authentication, a contact form, and an admin panel for managing content.
-=======
-
-# Project Title
-
-A brief description of what this project does and who it's for
-
 # 📋 Task Management System - Django
 
 A secure, responsive, and user-friendly **Task Management Web Application** built with **Django**. The application enables users to create, organize, update, search, and manage daily tasks through an intuitive interface with secure authentication and an administrative dashboard.
->>>>>>> 301fea9b958013bad28299ad66b274ee20a1b9f8
 
-## Features
+## Table of Contents
 
-- User registration and login
-- Create, read, update, and delete tasks
-- Mark tasks as complete or pending
-- Pagination for task lists
-- Contact form for user feedback or support requests
-- Admin interface for managing tasks and contacts
-
-<<<<<<< HEAD
-## Tech Stack
-=======
 * [About the Project](#-about-the-project)
 * [Project Screenshots](#-project-screenshots)
 * [Features](#-features)
@@ -38,30 +17,9 @@ A secure, responsive, and user-friendly **Task Management Web Application** buil
 * [Contributing](#-contributing)
 * [License](#-license)
 * [Contact](#-contact)
->>>>>>> 301fea9b958013bad28299ad66b274ee20a1b9f8
 
-- Python
-- Django
-- MySQL
-- HTML, CSS, and JavaScript
-- Bootstrap
+---
 
-<<<<<<< HEAD
-## Project Structure
-
-```text
-Todomanager/
-├── Todomanager/          # Project settings and URL configuration
-├── todolist/             # Main app for tasks and contact handling
-├── users/                # Authentication-related views and templates
-├── templates/            # Shared HTML templates
-├── static/               # CSS, JavaScript, and images
-├── manage.py             # Django project entry point
-└── README.md             # Project documentation
-```
-
-## Getting Started
-=======
 ## 📖 About the Project
 
 **Task Management System** is a Django-based web application designed to help users efficiently manage their daily tasks.
@@ -89,51 +47,35 @@ The project follows Django's **Model-View-Template (MVT)** architecture and demo
 
 ### 🏠 Home Page
 
-![Home Page]
-
----
+![Home Page](screenshots/home-page.png)
 
 ### 🔐 Login Page
 
 ![Login Page](screenshots/login-page.png)
 
----
-
 ### 📝 Registration Page
 
 ![Registration Page](screenshots/registration-page.png)
-
----
 
 ### 📋 Task Dashboard
 
 ![Task Dashboard](screenshots/task-dashboard.png)
 
----
-
 ### ➕ Add New Task
 
 ![Add Task](screenshots/add-task.png)
-
----
 
 ### ✏️ Update Task
 
 ![Update Task](screenshots/update-task.png)
 
----
-
 ### 🔍 Search Tasks
 
 ![Search Tasks](screenshots/search-tasks.png)
 
----
-
 ### 📬 Contact Page
 
 ![Contact Page](screenshots/contact-page.png)
-
----
 
 ### 👨‍💼 Django Admin Dashboard
 
@@ -145,9 +87,8 @@ The project follows Django's **Model-View-Template (MVT)** architecture and demo
 
 ### 🔐 Authentication
 
-* User Registration
-* Secure Login
-* Logout
+* User registration
+* Secure login and logout
 * Authentication-based access control
 * User-specific task management
 
@@ -162,118 +103,46 @@ The project follows Django's **Model-View-Template (MVT)** architecture and demo
 
 ### 🔍 Search & Navigation
 
-* Search tasks
-* Quickly locate specific tasks
+* Search tasks and quickly locate specific ones
 * Paginated task lists
 * Easy navigation between pages
->>>>>>> 301fea9b958013bad28299ad66b274ee20a1b9f8
 
 ### 📬 Contact System
 
-<<<<<<< HEAD
-Make sure you have the following installed:
-
-- Python 3.8+
-- Django
-- MySQL Server
-- Git
-=======
-* Contact form
-* User feedback submission
+* Contact form for user feedback or support requests
 * Structured contact information management
->>>>>>> 301fea9b958013bad28299ad66b274ee20a1b9f8
 
 ### 👨‍💼 Administration
 
-<<<<<<< HEAD
-1. Clone the repository
-   ```bash
-   git clone <your-repository-url>
-   cd Todomanager
-   ```
-
-2. Create and activate a virtual environment
-   ```bash
-   python -m venv venv
-   venv\Scripts\activate
-   ```
-
-3. Install dependencies
-   ```bash
-   pip install django mysqlclient
-   ```
-
-4. Configure the database
-   - Make sure your MySQL server is running.
-   - Create a database named `todo_db`.
-   - Update database settings in [Todomanager/settings.py](Todomanager/settings.py) if needed.
-
-5. Apply migrations
-   ```bash
-   python manage.py migrate
-   ```
-
-6. Create a superuser
-   ```bash
-   python manage.py createsuperuser
-   ```
-
-7. Run the development server
-   ```bash
-   python manage.py runserver
-   ```
-
-8. Open the app in your browser
-   - Home page: http://127.0.0.1:8000/
-   - Admin panel: http://127.0.0.1:8000/admin/
-
-## Usage
-
-1. Register a new account or log in.
-2. Add tasks from the main task page.
-3. Edit, delete, or mark tasks as complete.
-4. Use the contact page to send feedback or issues.
-=======
-* Django Admin Dashboard
+* Django Admin dashboard
 * Manage registered users
-* Manage tasks
-* Manage application data
+* Manage tasks and application data
 
 ### 📱 Responsive Design
 
 * Bootstrap-based interface
-* Desktop support
-* Tablet support
-* Mobile-friendly layout
+* Desktop, tablet, and mobile support
 
 ---
 
 ## 🛠️ Technology Stack
 
 | Technology | Purpose                       |
-| ---------- | ----------------------------- |
-| Python     | Backend Programming Language  |
-| Django     | Web Framework                 |
-| MySQL      | Relational Database           |
-| HTML5      | Web Page Structure            |
-| CSS3       | Styling                       |
-| JavaScript | Client-side Functionality     |
-| Bootstrap  | Responsive Frontend Framework |
-| Git        | Version Control               |
-| GitHub     | Source Code Hosting           |
+| ---------- | ------------------------------ |
+| Python     | Backend programming language   |
+| Django     | Web framework                  |
+| MySQL      | Relational database             |
+| HTML5      | Web page structure              |
+| CSS3       | Styling                          |
+| JavaScript | Client-side functionality        |
+| Bootstrap  | Responsive frontend framework    |
+| Git        | Version control                  |
+| GitHub     | Source code hosting              |
 
 ---
->>>>>>> 301fea9b958013bad28299ad66b274ee20a1b9f8
 
-## License
+## 📁 Project Structure
 
-<<<<<<< HEAD
-This project is licensed under the MIT License.
-
-## Contact
-
-For questions or support, contact: malliksohel582@gmail.com
-=======
 ```text
 Task-Management-System-Django/
 │
@@ -333,11 +202,11 @@ Task-Management-System-Django/
 
 ---
 
-# 🚀 Getting Started
+## 🚀 Getting Started
 
 Follow the instructions below to run the project locally.
 
-## Prerequisites
+### Prerequisites
 
 Make sure the following software is installed:
 
@@ -346,87 +215,52 @@ Make sure the following software is installed:
 * MySQL Server
 * Git
 
-Verify Python:
+Verify each with:
 
 ```bash
 python --version
-```
-
-Verify pip:
-
-```bash
 pip --version
-```
-
-Verify Git:
-
-```bash
 git --version
 ```
 
----
+### Installation
 
-## Installation
-
-### 1. Clone the Repository
+**1. Clone the repository**
 
 ```bash
 git clone https://github.com/SohelMallik/Task-Management-System-Django.git
-```
-
-Navigate to the project:
-
-```bash
 cd Task-Management-System-Django
 ```
 
----
+**2. Create a virtual environment**
 
-### 2. Create a Virtual Environment
-
-#### Windows
+Windows:
 
 ```bash
 python -m venv venv
-```
-
-Activate it:
-
-```bash
 venv\Scripts\activate
 ```
 
-#### Linux / macOS
+Linux / macOS:
 
 ```bash
 python3 -m venv venv
-```
-
-Activate it:
-
-```bash
 source venv/bin/activate
 ```
 
----
-
-### 3. Install Dependencies
-
-Install all required packages:
+**3. Install dependencies**
 
 ```bash
 pip install -r requirements.txt
 ```
 
-If you are setting up the core dependencies manually:
+If setting up core dependencies manually:
 
 ```bash
 pip install django mysqlclient
 ```
 
----
-
-### 4. Configure MySQL Database
+**4. Configure the MySQL database**
 
 Start the MySQL server and log in:
 
@@ -440,13 +274,7 @@ Create the database:
 CREATE DATABASE todo_db;
 ```
 
-Then configure the database connection inside:
-
-```text
-TaskManagement/settings.py
-```
-
-Example configuration:
+Then configure the database connection inside `TaskManagement/settings.py`:
 
 ```python
 DATABASES = {
@@ -463,27 +291,14 @@ DATABASES = {
 
 > ⚠️ For production applications, do not commit database passwords or other secrets to GitHub. Store sensitive credentials in environment variables.
 
----
-
-### 5. Apply Database Migrations
-
-Create migrations:
+**5. Apply database migrations**
 
 ```bash
 python manage.py makemigrations
-```
-
-Apply migrations:
-
-```bash
 python manage.py migrate
 ```
 
----
-
-### 6. Create a Superuser
-
-Create an administrator account:
+**6. Create a superuser**
 
 ```bash
 python manage.py createsuperuser
@@ -491,31 +306,16 @@ python manage.py createsuperuser
 
 Enter your username, email, and password when prompted.
 
----
-
-### 7. Run the Development Server
+**7. Run the development server**
 
 ```bash
 python manage.py runserver
 ```
 
-If successful, Django should start the local development server.
+**8. Open the application**
 
----
-
-### 8. Open the Application
-
-Open the application in your browser:
-
-```text
-http://127.0.0.1:8000/
-```
-
-Django Admin Panel:
-
-```text
-http://127.0.0.1:8000/admin/
-```
+* Home page: http://127.0.0.1:8000/
+* Django Admin panel: http://127.0.0.1:8000/admin/
 
 ---
 
@@ -537,7 +337,7 @@ http://127.0.0.1:8000/admin/
 
 ### For Administrators
 
-Administrators can access the Django Admin Panel to:
+Administrators can access the Django Admin panel to:
 
 * Manage users
 * Manage tasks
@@ -551,55 +351,35 @@ Administrators can access the Django Admin Panel to:
 
 Contributions are welcome.
 
-### 1. Fork the Repository
-
-Fork the project to your GitHub account.
-
-### 2. Clone Your Fork
-
-```bash
-git clone https://github.com/YOUR-USERNAME/Task-Management-System-Django.git
-```
-
-### 3. Create a Feature Branch
-
-```bash
-git checkout -b feature/new-feature
-```
-
-### 4. Make Your Changes
-
-Implement your feature or bug fix.
-
-### 5. Stage the Changes
-
-```bash
-git add .
-```
-
-### 6. Commit Your Changes
-
-```bash
-git commit -m "Add new feature"
-```
-
-### 7. Push the Branch
-
-```bash
-git push origin feature/new-feature
-```
-
-### 8. Open a Pull Request
-
-Open a Pull Request describing your changes and why they should be included.
+1. Fork the repository to your GitHub account.
+2. Clone your fork:
+   ```bash
+   git clone https://github.com/YOUR-USERNAME/Task-Management-System-Django.git
+   ```
+3. Create a feature branch:
+   ```bash
+   git checkout -b feature/new-feature
+   ```
+4. Make your changes.
+5. Stage the changes:
+   ```bash
+   git add .
+   ```
+6. Commit your changes:
+   ```bash
+   git commit -m "Add new feature"
+   ```
+7. Push the branch:
+   ```bash
+   git push origin feature/new-feature
+   ```
+8. Open a Pull Request describing your changes and why they should be included.
 
 ---
 
 ## 📄 License
 
-This project is licensed under the **MIT License**.
-
-See the `LICENSE` file for complete license information.
+This project is licensed under the **MIT License**. See the `LICENSE` file for complete license information.
 
 ---
 
@@ -607,7 +387,7 @@ See the `LICENSE` file for complete license information.
 
 **Sohel Mallik**
 
-* 📧 Email: **[malliksohel582@gmail.com](mailto:malliksohel582@gmail.com)**
+* 📧 Email: [malliksohel582@gmail.com](mailto:malliksohel582@gmail.com)
 * 🔗 GitHub: https://github.com/SohelMallik
 * 📂 Repository: https://github.com/SohelMallik/Task-Management-System-Django
 
@@ -615,13 +395,8 @@ See the `LICENSE` file for complete license information.
 
 ## ⭐ Support
 
-If you find this project useful, consider giving the repository a **⭐ star** on GitHub.
-
-It helps support the project and encourages further development.
-
----
+If you find this project useful, consider giving the repository a **⭐ star** on GitHub. It helps support the project and encourages further development.
 
 <p align="center">
   <strong>Built with ❤️ using Python and Django</strong>
 </p>
->>>>>>> 301fea9b958013bad28299ad66b274ee20a1b9f8
