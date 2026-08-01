@@ -16,6 +16,8 @@ def homepage(request):
     }
     return render(request, 'main.html', context)
 
+
+
 def aboutus(request):
     context={
         'page' :'aboutus page'
@@ -28,16 +30,18 @@ def aboutus(request):
 #     }
 #     return render(request, 'contact.html', context)
 
+
+
 from .models import Contact
 
 @login_required(login_url='login')  # Require login to access the contact view
 def contact(request):
     if request.method == "POST":
-        name = request.POST.get("name")
-        email = request.POST.get("email")
-        issue = request.POST.get("issue")
-        priority = request.POST.get("priority")
-        message = request.POST.get("message")
+        name = request.POST.get("name", "")
+        email = request.POST.get("email", "")
+        issue = request.POST.get("issue", "other")
+        priority = request.POST.get("priority", "Low")
+        message = request.POST.get("message", "")
 
         Contact.objects.create(
             name=name,
@@ -48,34 +52,74 @@ def contact(request):
         )
         messages.success(request, "Contact message submitted successfully!")
 
-        return redirect("contact")   # Redirect back to contact page
+        return redirect("submit_contact")   # Redirect back to contact page
 
     return render(request, "contact.html")
 
-@login_required(login_url='login')  # Require login to access the todolist view
-def todolist(request):# For save data to database
-
-    if request.method=="POST":# POST Means Create data to DB
-        from_data=TaskForm(request.POST or None)# Create New task 
-        if from_data.is_valid():
-            from_data.save() #Save the data to database
-            messages.success(request, "Task added successfully!")# Display success message
-            return redirect("todolist") #Redirect to todolist page after saving the data
-        
-        messages.error(request, "Failed to add task. Please check the form for errors.")# Display error message if form is invalid
 
 
-    all_tasks= Task.objects.all() # get all the tasks from database as Objects
-    #For Pagination
-    paginator = Paginator(all_tasks, 5)  # Show 5 tasks per page
-    page_number = request.GET.get('page')  # Get the current page number from the request
-    all_tasks = paginator.get_page(page_number)  # Get the tasks for the current page
+@login_required(login_url='login')
+def todolist(request):
+    # For saving task data to database
 
-    context={
-        'page' :'todolist page',
+    if request.method == "POST":
+
+        # Get submitted data and connect it to TaskForm
+        form_data = TaskForm(request.POST)
+
+        if form_data.is_valid():
+
+            # Save task to database
+            form_data.save()
+
+            messages.success(
+                request,
+                "Task added successfully!"
+            )
+
+            return redirect("todolist")
+
+        else:
+            messages.error(
+                request,
+                "Failed to add task. Please check the form for errors."
+            )
+
+    else:
+        # Create empty form when page first loads
+        form_data = TaskForm()
+
+
+    # Get all tasks from database
+    all_tasks = Task.objects.all().order_by('-id')
+
+
+    # Pagination - 5 tasks per page
+    paginator = Paginator(all_tasks, 5)
+
+    # Get current page number
+    page_number = request.GET.get('page')
+
+    # Get tasks for current page
+    all_tasks = paginator.get_page(page_number)
+
+
+    context = {
+        'page': 'todolist page',
         'all_tasks': all_tasks,
+
+        # Connect TaskForm with todolist.html
+        'form': form_data,
     }
-    return render(request, 'todolist.html', context)
+
+
+    return render(
+        request,
+        'todolist.html',
+        context
+    )
+
+
 
 @login_required(login_url='login')  # Require login to access the delete_task view
 def delete_task(request, task_id):# For Delete data from database
@@ -83,6 +127,8 @@ def delete_task(request, task_id):# For Delete data from database
     task.delete() # Delete the task from database
     messages.success(request, "Task deleted successfully!")# Display success message
     return redirect("todolist") #Redirect to todolist page after deleting the data
+
+
 
 #For Edit data from database
 @login_required(login_url='login')
@@ -112,6 +158,7 @@ def edit_task(request, task_id):  # For Edit data from database
 
     return render(request, 'edit.html', context)
 
+
 #Marking a task as complete
 @login_required(login_url='login')
 def complete_task(request, task_id):  # For Marking a task as complete
@@ -120,6 +167,8 @@ def complete_task(request, task_id):  # For Marking a task as complete
     task.save()
     messages.success(request, "Task marked as complete!")
     return redirect("todolist")
+
+
 
 #Login 
 @login_required(login_url='login')
@@ -130,19 +179,18 @@ def pending_task(request, task_id):  # For Marking a task as pending
     messages.success(request, "Task marked as pending!")
     return redirect("todolist")
 
+
 def submit_contact(request):
     if request.method == "POST":
         name = request.POST.get("name")
         email = request.POST.get("email")
         issue = request.POST.get("issue")
-        priority = request.POST.get("priority")
         message = request.POST.get("message")
 
         Contact.objects.create(
             name=name,
             email=email,
             issue=issue,
-            priority=priority,
             message=message
         )
         messages.success(request, "Contact message submitted successfully!")

@@ -31,7 +31,6 @@ class Contact(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     issue = models.CharField(max_length=50, choices=ISSUE_CHOICES)
-    priority = models.CharField(max_length=20, choices=PRIORITY_CHOICES)
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 

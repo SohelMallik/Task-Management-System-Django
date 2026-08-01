@@ -13,7 +13,6 @@ class ContactAdmin(admin.ModelAdmin):
         "name",
         "email",
         "issue",
-        "priority",
         "created_at",
     )
 
@@ -24,7 +23,6 @@ class ContactAdmin(admin.ModelAdmin):
 
     list_filter = (
         "issue",
-        "priority",
     )
 
     ordering = ("-created_at",)
