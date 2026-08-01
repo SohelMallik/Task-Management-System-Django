@@ -47,39 +47,45 @@ The project follows Django's **Model-View-Template (MVT)** architecture and demo
 
 ### 🏠 Home Page
 
-![Home Page](screenshots/home-page.png)
+![Home Page](https://github.com/SohelMallik/Task-Management-System-Django/blob/51df8b1c4b33b3f38a31506cd29c2cdb8ba74877/screenshot/Home_page.png
+)
 
 ### 🔐 Login Page
 
-![Login Page](screenshots/login-page.png)
+![Login Page](https://github.com/SohelMallik/Task-Management-System-Django/blob/51df8b1c4b33b3f38a31506cd29c2cdb8ba74877/screenshot/Login_page.png
+)
 
 ### 📝 Registration Page
 
-![Registration Page](screenshots/registration-page.png)
+![Registration Page](https://github.com/SohelMallik/Task-Management-System-Django/blob/51df8b1c4b33b3f38a31506cd29c2cdb8ba74877/screenshot/Registration_Page.png
+)
 
 ### 📋 Task Dashboard
 
-![Task Dashboard](screenshots/task-dashboard.png)
+![Task Dashboard](https://github.com/SohelMallik/Task-Management-System-Django/blob/51df8b1c4b33b3f38a31506cd29c2cdb8ba74877/screenshot/Task_Dashboard.png
+)
 
 ### ➕ Add New Task
 
-![Add Task](screenshots/add-task.png)
+![Add Task](https://github.com/SohelMallik/Task-Management-System-Django/blob/51df8b1c4b33b3f38a31506cd29c2cdb8ba74877/screenshot/Add_New_Task.png
+)
 
 ### ✏️ Update Task
 
-![Update Task](screenshots/update-task.png)
+![Update Task](https://github.com/SohelMallik/Task-Management-System-Django/blob/51df8b1c4b33b3f38a31506cd29c2cdb8ba74877/screenshot/Update_Task.png
+)
 
-### 🔍 Search Tasks
 
-![Search Tasks](screenshots/search-tasks.png)
 
 ### 📬 Contact Page
 
-![Contact Page](screenshots/contact-page.png)
+![Contact Page](https://github.com/SohelMallik/Task-Management-System-Django/blob/51df8b1c4b33b3f38a31506cd29c2cdb8ba74877/screenshot/Contact_Page.png
+)
 
 ### 👨‍💼 Django Admin Dashboard
 
-![Admin Dashboard](screenshots/admin-dashboard.png)
+![Admin Dashboard](https://github.com/SohelMallik/Task-Management-System-Django/blob/51df8b1c4b33b3f38a31506cd29c2cdb8ba74877/screenshot/Django_Admin_Dashboard.png
+)
 
 ---
 
