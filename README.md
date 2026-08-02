@@ -1,6 +1,6 @@
 # 📋 Task Management System - Django
 
-A secure, responsive, and user-friendly **Task Management Web Application** built with **Django**. The application enables users to create, organize, update, search, and manage daily tasks through an intuitive interface with secure authentication and an administrative dashboard.
+A secure, responsive, and user-friendly **Task Management Web Application** built with **Django**. The application enables users to create, organize, update, and manage daily tasks through an intuitive interface with secure authentication and an administrative dashboard.
 
 ## Table of Contents
 
@@ -24,19 +24,18 @@ A secure, responsive, and user-friendly **Task Management Web Application** buil
 
 **Task Management System** is a Django-based web application designed to help users efficiently manage their daily tasks.
 
-The application provides secure user authentication and complete task management functionality, including creating, viewing, updating, deleting, searching, and tracking tasks.
+The application provides secure user authentication and complete task management functionality, including creating, viewing, updating, deleting, and tracking tasks.
 
-The project follows Django's **Model-View-Template (MVT)** architecture and demonstrates practical implementation of backend development, database management, authentication, CRUD operations, pagination, search functionality, and responsive web design.
+The project follows Django's **Model-View-Template (MVT)** architecture and demonstrates practical implementation of backend development, database management, authentication, CRUD operations, pagination, and responsive web design.
 
 ### 🎯 Project Objectives
 
 * Provide a simple and efficient platform for managing daily tasks.
 * Allow authenticated users to create and organize their tasks.
 * Implement complete CRUD functionality.
-* Provide task searching and filtering capabilities.
 * Allow users to track completed and pending tasks.
 * Provide secure authentication and authorization.
-* Create a responsive interface for desktop and mobile devices.
+* Create a responsive interface for desktop.
 * Provide administrators with centralized management through Django Admin.
 
 ---
@@ -79,8 +78,7 @@ The project follows Django's **Model-View-Template (MVT)** architecture and demo
 
 ### 📬 Contact Page
 
-![Contact Page](https://github.com/SohelMallik/Task-Management-System-Django/blob/51df8b1c4b33b3f38a31506cd29c2cdb8ba74877/screenshot/Contact_Page.png
-)
+![Contact Page](https://github.com/SohelMallik/Task-Management-System-Django/blob/37086a942186e21c837763b7397ce1ac1927c079/screenshot/Contact_Page.png)
 
 ### 👨‍💼 Django Admin Dashboard
 
@@ -109,7 +107,6 @@ The project follows Django's **Model-View-Template (MVT)** architecture and demo
 
 ### 🔍 Search & Navigation
 
-* Search tasks and quickly locate specific ones
 * Paginated task lists
 * Easy navigation between pages
 
@@ -184,7 +181,7 @@ Task-Management-System-Django/
 │   ├── js/
 │   └── images/
 │
-├── media/                       # User-uploaded media
+├
 │
 ├── screenshots/                 # README screenshots
 │   ├── home-page.png
@@ -336,10 +333,9 @@ python manage.py runserver
 5. View your task list.
 6. Update existing tasks.
 7. Mark tasks as completed or pending.
-8. Search for tasks.
-9. Delete tasks that are no longer required.
-10. Use the Contact page to submit feedback.
-11. Log out securely when finished.
+8. Delete tasks that are no longer required.
+9. Use the Contact page to submit feedback.
+10. Log out securely when finished.
 
 ### For Administrators
 
@@ -403,6 +399,4 @@ This project is licensed under the **MIT License**. See the `LICENSE` file for c
 
 If you find this project useful, consider giving the repository a **⭐ star** on GitHub. It helps support the project and encourages further development.
 
-<p align="center">
-  <strong>Built with ❤️ using Python and Django</strong>
-</p>
+
