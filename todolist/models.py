@@ -1,8 +1,10 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
 class Task(models.Model):#Tell it is model
+    owner= models.ForeignKey(User, on_delete=models.CASCADE, default=None) #owner is a foreign key to the user model
     task= models.CharField(max_length=500) #Task is a character field with max length of 500
     is_completed= models.BooleanField(default=False) #is_completed is a boolean field with default value of False
 
