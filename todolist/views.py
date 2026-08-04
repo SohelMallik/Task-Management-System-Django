@@ -70,7 +70,9 @@ def todolist(request):
         if form_data.is_valid():
 
             # Save task to database
-            form_data.save()
+            instance=form_data.save(commit=False)
+            instance.owner=request.user
+            instance.save()
 
             messages.success(
                 request,
