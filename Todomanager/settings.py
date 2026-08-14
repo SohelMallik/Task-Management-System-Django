@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-la5*&mowlh38r&efmwu-x6)9qg^mlnbr)#3@ii6s#(p(w5aof9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -75,16 +75,7 @@ WSGI_APPLICATION = 'Todomanager.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'todo_db',
-        'USER': 'django',
-        'PASSWORD': 'django123',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
-}
+
 
 
 # Password validation
@@ -127,8 +118,15 @@ STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'static'),
 ]
 
-
+#For Deployment
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 from pathlib import Path
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # Directory for static files used in development
+]
+
+
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -141,4 +139,30 @@ STATICFILES_DIRS = [
 LOGIN_REDIRECT_URL = 'todolist'  # Redirect to todolist after login
 LOGIN_URL = 'login'  # Redirect to login page if not logged in
 
-# Default primary key field type
+
+# For ENV file
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Django Secret Key
+SECRET_KEY = os.getenv("SECRET_KEY")
+
+# Debug
+DEBUG = os.getenv("DEBUG", "False") == "True"
+
+# Database - AWS RDS MySQL
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": os.getenv("DB_NAME"),
+        "USER": os.getenv("DB_USER"),
+        "PASSWORD": os.getenv("DB_PASSWORD"),
+        "HOST": os.getenv("DB_HOST"),
+        "PORT": os.getenv("DB_PORT", "3306"),
+        "OPTIONS": {
+            "init_command": "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
+    }
+}
