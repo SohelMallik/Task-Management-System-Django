@@ -1,4 +1,3 @@
-```yaml
 name: Deploy TodoManager on AWS
 
 on:
@@ -11,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
       # 1. Checkout GitHub repository
       - name: Checkout
         uses: actions/checkout@v4
@@ -46,7 +44,7 @@ jobs:
           ssh-keyscan -H "${{ secrets.AWS_EC2_IP }}" >> ~/.ssh/known_hosts
 
       # 7. Deploy to AWS EC2
-      - name: Deploy on AWS EC2
+      - name: Deploy to AWS EC2
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
@@ -56,9 +54,7 @@ jobs:
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           DB_HOST: ${{ secrets.DB_HOST }}
         run: |
-          ssh -o StrictHostKeyChecking=no \
-            -i ~/.ssh/id_rsa \
-            ubuntu@${{ secrets.AWS_EC2_IP }} \
+          ssh -i ~/.ssh/id_rsa ubuntu@${{ secrets.AWS_EC2_IP }} \
             "DOCKER_USERNAME='$DOCKER_USERNAME' \
              DOCKER_PASSWORD='$DOCKER_PASSWORD' \
              DJANGO_SECRET_KEY='$DJANGO_SECRET_KEY' \
@@ -68,36 +64,47 @@ jobs:
              DB_HOST='$DB_HOST' \
              bash -s" << 'EOF'
 
-            # Login to Docker Hub
-            echo "$DOCKER_PASSWORD" | docker login \
-              --username "$DOCKER_USERNAME" \
-              --password-stdin
+          echo "Logging into Docker Hub..."
 
-            # Pull latest image
-            docker pull "$DOCKER_USERNAME/todomanager:latest"
+          echo "$DOCKER_PASSWORD" | docker login \
+            --username "$DOCKER_USERNAME" \
+            --password-stdin
 
-            # Stop old container
-            docker stop todomanager || true
+          echo "Pulling latest Docker image..."
 
-            # Remove old container
-            docker rm todomanager || true
+          docker pull "$DOCKER_USERNAME/todomanager:latest"
 
-            # Run new container
-            docker run -d \
-              --name todomanager \
-              --restart unless-stopped \
-              -p 80:8000 \
-              -e SECRET_KEY="$DJANGO_SECRET_KEY" \
-              -e DEBUG="False" \
-              -e DB_NAME="$DB_NAME" \
-              -e DB_USER="$DB_USER" \
-              -e DB_PASSWORD="$DB_PASSWORD" \
-              -e DB_HOST="$DB_HOST" \
-              -e DB_PORT="3306" \
-              "$DOCKER_USERNAME/todomanager:latest"
+          echo "Stopping old container..."
 
-            # Show running container
-            docker ps
+          docker stop todomanager || true
+
+          echo "Removing old container..."
+
+          docker rm todomanager || true
+
+          echo "Starting new container..."
+
+          docker run -d \
+            --name todomanager \
+            --restart unless-stopped \
+            -p 80:8000 \
+            -e SECRET_KEY="$DJANGO_SECRET_KEY" \
+            -e DEBUG="False" \
+            -e DB_NAME="$DB_NAME" \
+            -e DB_USER="$DB_USER" \
+            -e DB_PASSWORD="$DB_PASSWORD" \
+            -e DB_HOST="$DB_HOST" \
+            -e DB_PORT="3306" \
+            "$DOCKER_USERNAME/todomanager:latest"
+
+          echo "Running Django migrations..."
+
+          docker exec todomanager python manage.py migrate
+
+          echo "Container status:"
+
+          docker ps
+
+          echo "Deployment completed successfully!"
 
           EOF
-```
