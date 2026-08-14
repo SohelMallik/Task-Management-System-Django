@@ -1,4 +1,4 @@
-
+```yaml
 name: Deploy TodoManager on AWS
 
 on:
@@ -27,16 +27,17 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # 4. Build and push Docker image
-      - name: Build and Push Docker Image
+      # 4. Build Docker image
+      - name: Build Docker Image
         run: |
-          docker build \
-            -t ${{ secrets.DOCKER_USERNAME }}/todomanager:latest .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/todomanager:latest .
 
-          docker push \
-            ${{ secrets.DOCKER_USERNAME }}/todomanager:latest
+      # 5. Push Docker image to Docker Hub
+      - name: Push Docker Image
+        run: |
+          docker push ${{ secrets.DOCKER_USERNAME }}/todomanager:latest
 
-      # 5. Setup SSH
+      # 6. Setup SSH
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
@@ -44,22 +45,36 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H "${{ secrets.AWS_EC2_IP }}" >> ~/.ssh/known_hosts
 
-      # 6. Deploy to AWS EC2
+      # 7. Deploy to AWS EC2
       - name: Deploy on AWS EC2
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_HOST: ${{ secrets.DB_HOST }}
         run: |
           ssh -o StrictHostKeyChecking=no \
             -i ~/.ssh/id_rsa \
-            ubuntu@${{ secrets.AWS_EC2_IP }} << 'EOF'
+            ubuntu@${{ secrets.AWS_EC2_IP }} \
+            "DOCKER_USERNAME='$DOCKER_USERNAME' \
+             DOCKER_PASSWORD='$DOCKER_PASSWORD' \
+             DJANGO_SECRET_KEY='$DJANGO_SECRET_KEY' \
+             DB_NAME='$DB_NAME' \
+             DB_USER='$DB_USER' \
+             DB_PASSWORD='$DB_PASSWORD' \
+             DB_HOST='$DB_HOST' \
+             bash -s" << 'EOF'
 
             # Login to Docker Hub
-            echo "${{ secrets.DOCKER_PASSWORD }}" | \
-              docker login \
-              -u "${{ secrets.DOCKER_USERNAME }}" \
+            echo "$DOCKER_PASSWORD" | docker login \
+              --username "$DOCKER_USERNAME" \
               --password-stdin
 
-            # Pull latest TodoManager image
-            docker pull \
-              ${{ secrets.DOCKER_USERNAME }}/todomanager:latest
+            # Pull latest image
+            docker pull "$DOCKER_USERNAME/todomanager:latest"
 
             # Stop old container
             docker stop todomanager || true
@@ -72,17 +87,17 @@ jobs:
               --name todomanager \
               --restart unless-stopped \
               -p 80:8000 \
-              -e SECRET_KEY="${{ secrets.DJANGO_SECRET_KEY }}" \
+              -e SECRET_KEY="$DJANGO_SECRET_KEY" \
               -e DEBUG="False" \
-              -e DB_NAME="${{ secrets.DB_NAME }}" \
-              -e DB_USER="${{ secrets.DB_USER }}" \
-              -e DB_PASSWORD="${{ secrets.DB_PASSWORD }}" \
-              -e DB_HOST="${{ secrets.DB_HOST }}" \
+              -e DB_NAME="$DB_NAME" \
+              -e DB_USER="$DB_USER" \
+              -e DB_PASSWORD="$DB_PASSWORD" \
+              -e DB_HOST="$DB_HOST" \
               -e DB_PORT="3306" \
-              ${{ secrets.DOCKER_USERNAME }}/todomanager:latest
+              "$DOCKER_USERNAME/todomanager:latest"
 
-            # Show running containers
+            # Show running container
             docker ps
 
           EOF
-
+```
