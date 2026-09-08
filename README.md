@@ -397,6 +397,6 @@ This project is licensed under the **MIT License**. See the `LICENSE` file for c
 
 ## ⭐ Support
 
-If you find this project useful, consider giving the repository a **⭐ star** on GitHub. It helps support the project and encourages further development.
+If you find this project useful, consider giving the repository a **⭐ star** on GitHub.
 
 
